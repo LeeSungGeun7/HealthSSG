@@ -1,0 +1,87 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("NEXT_PUBLIC_DATABASE_URL")
+}
+
+
+model User {
+  id       Int     @id  @default(autoincrement())
+  email String @unique
+  username String? @unique
+  role Role @default(USER)
+  phone String? @unique
+  post String? 
+  profile String? 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  posts   Post[]
+  comments Comment[]
+  commentLike CommentLike[]
+  postLike PostLike[]
+}
+
+enum Role {
+  USER
+  ADMIN
+  SUPERUSER
+}
+
+model Post {
+  id Int @id @default(autoincrement())
+  like Int @default(0)
+  thumbnail String 
+  title String
+  body String @db.LongText
+  type String
+  userId Int
+  user User @relation(fields: [userId], references: [id])
+  created_at DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  comments Comment[]
+  postLike PostLike[]
+}
+
+model Comment {
+  id Int @id @default(autoincrement())
+  like Int @default(0)
+  text String @db.VarChar(400)
+  userId Int
+  postId Int?
+  contactId Int?
+  created_at DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  post Post? @relation(fields: [postId], references: [id])
+  user User @relation(fields: [userId], references: [id])
+  contact Contact? @relation(fields: [contactId], references: [id])
+  commentLike CommentLike[]
+  
+}
+
+model PostLike {
+  id        Int  @id @default(autoincrement())
+  userId    Int
+  postId    Int  @unique
+  user      User @relation(fields: [userId], references: [id])
+  post      Post @relation(fields: [postId], references: [id])
+}
+
+model CommentLike {
+  id         Int     @id @default(autoincrement())
+  userId     Int
+  commentId  Int
+  user       User    @relation(fields: [userId], references: [id])
+  comment    Comment @relation(fields: [commentId], references: [id])
+}
+
+
+model Contact {
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  content String?
+  like Int @default(0)
+  comments Comment[]
+}

@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+    font-family: 'Jalnan2TTF';
+    src: url('/fonts/Jalnan2TTF.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+
+@layer {
+  
+}
+
+
+.container {
+  -webkit-overflow-scrolling: touch;
+}
+
+.item {
+  @apply flex-shrink-0 w-64 h-64 bg-gray-200 rounded-md;
+}
