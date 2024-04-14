@@ -10,6 +10,7 @@ import { getDayMinuteCounter } from '@/utils/TimeCal';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 
+
 type Props = {
   params: {
     id: number;
