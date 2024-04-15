@@ -171,7 +171,7 @@ function Page() {
                             <Image alt='' width={50} height={50} src={`${e.user.profile}/avatar`} className='flex justify-center items-center bg-slate-100 rounded-full'/>
                             <div className='m-4 text-white'>{e.user.username}</div>
                             <div className='z-[1000]  m-2 ml-auto'>
-                                <FaHeart onClick={()=> {handleLike(e.id)}} className={`w-[30px] h-[30px] z-[1000] ${e.postLike ? "text-yellow-300" : "text-slate-300" }`}/>
+                                <FaHeart onClick={()=> {handleLike(e.id)}} className={`w-[30px] h-[30px] z-[1000] ${e.postLike ? "text-yellow-300" : "text-slate-300"}`}/>
                             </div>
                             <div className='text-black h-[20px] w-[20px]'>{e.postLike}</div>
                         </span>
