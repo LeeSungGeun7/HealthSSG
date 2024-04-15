@@ -4,7 +4,7 @@ import { IoIosClose } from "react-icons/io";
 import { signIn , signOut ,useSession } from "next-auth/react"
 import Link from '@/node_modules/next/link';
 import Router from 'next/router';
-import { getToken } from '../api/kakao/route';
+
 
 
 
@@ -33,11 +33,9 @@ function Page() {
                 </div>
             </div>
             <Link href={KAKAO_AUTH_URL} className='text-[#371D1E] text-lg ml-[10%] w-[80%] mt-10 p-10 flex justify-center items-center bg-[#FAE100]'>
-                카카오 회원가입
-            </Link>
-            <div onClick={()=>{getToken()}} className='text-[#371D1E] text-lg ml-[10%] w-[80%] mt-10 p-10 flex justify-center items-center bg-[#FAE100]'>
                 카카오 로그인
-            </div>
+            </Link>
+           
         </div>
     </div>
   )
