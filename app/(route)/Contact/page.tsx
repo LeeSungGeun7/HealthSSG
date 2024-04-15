@@ -15,6 +15,36 @@ import { CreateContactRe, ReadContactRe } from './action';
 import { getDayMinuteCounter } from "@/utils/TimeCal";
 
 
+interface Contact {
+  id: number;
+  createdAt: Date;
+  content: string | null;
+  like: number;
+  comments: Comment[];
+}
+
+interface Comment {
+  id: number;
+  like: number;
+  text: string;
+  userId: number;
+  postId: number | null;
+  contactId: number | null;
+  created_at: Date;
+  updatedAt: Date;
+  user: {
+    id: number;
+    email: string;
+    username: string | null;
+    role: any;
+    phone: string | null;
+    post: string | null;
+    profile: string | null;
+    createdAt: Date;
+    updatedAt: Date;
+  }; 
+}
+
 const center = "flex justify-center items-center"
 
 const Reply = ({setTurn,comments}: {setTurn: ()=> void; comments: Comment[] | undefined}) => {
@@ -64,35 +94,7 @@ function Page() {
   //const user = useSession();
   //const email = user.data?.user?.email;
   
-  interface Contact {
-    id: number;
-    createdAt: Date;
-    content: string | null;
-    like: number;
-    comments: Comment[];
-  }
-  
-  interface Comment {
-    id: number;
-    like: number;
-    text: string;
-    userId: number;
-    postId: number | null;
-    contactId: number | null;
-    created_at: Date;
-    updatedAt: Date;
-    user: {
-      id: number;
-      email: string;
-      username: string | null;
-      role: any;
-      phone: string | null;
-      post: string | null;
-      profile: string | null;
-      createdAt: Date;
-      updatedAt: Date;
-    }; 
-}
+ 
 
 
   async function getData(): Promise<Contact[]> {
