@@ -88,3 +88,12 @@ ISR
 포스트 상세페이지 / 댓글 / 댓글삭제 / 댓글수정X
 유저프로필 수정 / 닉네임 or 사진 한가지만 변경X
 
+
+
+배포시 마주한 에러 -
+
+No duplicate props allowed - props를 중복해서 사용한경우 
+
+Component definition is missing display name - 컴포넌트화 시키지 않은
+DeleteButton.displayName = 'DeleteButton'; 명시해서 해결 
+
