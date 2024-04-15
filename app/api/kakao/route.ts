@@ -2,7 +2,7 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-export const getToken = async () => {
+export default async function getToken() {
     const search = new URLSearchParams(window.location.search)
     
     const code = search.get("code");
