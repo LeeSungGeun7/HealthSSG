@@ -2,11 +2,23 @@
 import { PrismaClient } from "@prisma/client"
 import { revalidateTag } from "next/cache";
 
- 
+interface Post {
+    id: number;
+    like: number;
+    thumbnail: string;
+    title: string;
+    body: string;
+    type: string;
+    userId: number;
+    created_at: Date;
+    updatedAt: Date;
+    isDeleted?: boolean ;
+} 
+
 const prisma = new PrismaClient();
 export async function getMyPost(userEmail:string) {
     if (!userEmail || userEmail == "") {
-        return 
+        return ;
     }
     const user = await prisma.user.findFirst({
         where: {

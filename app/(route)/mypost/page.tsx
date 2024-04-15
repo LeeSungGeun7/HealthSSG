@@ -29,7 +29,7 @@ function Page() {
   DeleteButton.displayName = 'DeleteButton';
     const {data: session} = useSession();
 
-    const [data , setData] =useState<(Post & { isDeleted: boolean })[]>([]);
+    const [data , setData] =useState<(Post & { isDeleted: boolean  })[]>([]);
 
     const email = session?.user?.email;
     
@@ -79,7 +79,9 @@ function Page() {
         async function getData() {
             if (email) {
                 const res = await getMyPost(email)
-                setData(res);
+                if (res !== undefined) {
+                  setData(res.map(item => ({ ...item, isDeleted: false })));
+                }
             } 
          }
          getData();
