@@ -28,7 +28,7 @@ interface Post  {
     created_at: Date;
     updatedAt: Date;
     user: User
-    comments: Comment[]
+    comments: Comment[] 
   // 여기에 null을 허용
 }
 
@@ -45,8 +45,8 @@ interface Comment {
 interface User {
   id: number ;
   email: string;
-  username?: string ;
-  profile? : string;
+  username: string | null ;
+  profile? : string | null;
 }
 
 
@@ -57,7 +57,6 @@ function Page ({params}:Props) {
   const [user,setUser] = useRecoilState(userAtom);
   const [data,setData] = useState<Post|null>(null);
   const [reply , setReply] = useState("");
-  const [modalOpen, setModalOpen] = useState(false);
   const route = useRouter();
 
   const parse = require('html-react-parser').default;

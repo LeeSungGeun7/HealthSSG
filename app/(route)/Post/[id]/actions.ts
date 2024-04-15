@@ -3,10 +3,40 @@ import { PrismaClient } from "@prisma/client";
 
 import { NextResponse } from "next/server";
 
+interface Post  {
+    id: number;
+    like: number;
+    thumbnail: string;
+    title: string;
+    body: string;
+    type: string;
+    userId: number;
+    created_at: Date;
+    updatedAt: Date;
+    user: User
+    comments: Comment[] 
+  // 여기에 null을 허용
+}
 
+interface Comment {
+  id :number;
+  like : number; 
+  userId : number;
+  postId : number | null;
+  text: string;
+  user: User;
+  created_at : Date; 
+}
+
+interface User {
+  id: number ;
+  email: string;
+  username: string | null ;
+  profile? : string | null;
+}
 
 const prisma = new PrismaClient()
-export async function getDataById(id:number) {
+export async function getDataById(id:number): Promise<Post | null> {
     const posts = await prisma.post.findFirst({
         where: {
             id : id 
