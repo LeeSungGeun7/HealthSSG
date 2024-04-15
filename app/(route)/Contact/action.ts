@@ -3,24 +3,54 @@ import { getDayMinuteCounter } from "@/utils/TimeCal";
 import { PrismaClient } from "@prisma/client";
 import { NextResponse } from "next/server";
 
-interface Contact {
+// interface Contact {
+//     id: number;
+//     createdAt: Date;
+//     content: string | null;
+//     like: number;
+//     comments: Comment[];
+//   }
+ 
+//   interface Comment {
+//     id: number;
+//     like: number;
+//     text: string;
+//     userId: number;
+//     postId: number;
+//     contactId: number | null;
+//     created_at: Date;
+//     updatedAt: Date;
+//   } 
+  
+  interface Contact {
     id: number;
     createdAt: Date;
     content: string | null;
     like: number;
     comments: Comment[];
   }
- 
+  
   interface Comment {
     id: number;
     like: number;
     text: string;
     userId: number;
-    postId: number;
+    postId: number | null;
     contactId: number | null;
     created_at: Date;
     updatedAt: Date;
-  }  
+    user: {
+      id: number;
+      email: string;
+      username: string | null;
+      role: any;
+      phone: string | null;
+      post: string | null;
+      profile: string | null;
+      createdAt: Date;
+      updatedAt: Date;
+    }; 
+}
 
 const prisma = new PrismaClient()
 
@@ -75,21 +105,34 @@ export async function CreateContactRe(userId:number , content:string) {
     
 }
 
-export async function ReadContactRe() {
+export async function ReadContactRe(): Promise<Contact[]> {
     const data = await prisma.contact.findMany({
-        where:{
-            id: 1 
-        }, 
-        include: {
-            comments: {    
-                include: {
-                    user: true
-                }
+      where: { id: 1 },
+      include: {
+        comments: {
+          include: {
+            user: {
+              select: {
+                id: true,
+                email: true,
+                username: true,
+                role: true,
+                phone: true,
+                post: true,
+                profile: true,
+                createdAt: true,
+                updatedAt: true,
+              },
             },
-        }
-    })
-    return data ;
-}
+          },
+        },
+      },
+    });
+    return data;
+  }
+  
+ 
+  
 
 export async function DelContactRe(commentId:number,userId:number) {
     const res = await prisma.comment.delete({
