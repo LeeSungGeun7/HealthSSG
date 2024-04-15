@@ -99,7 +99,7 @@ function Page() {
     const handleLike = (id:number) => {
 
       setData((prev:any) => {
-        const updatedData = prev.map((item) => {
+        const updatedData = prev.map((item:any) => {
           if (item.id === id) {
             return {
               ...item,
@@ -109,7 +109,7 @@ function Page() {
           return item;
         });
     
-        const updatedItem = updatedData.find((item) => item.id === id);
+        const updatedItem = updatedData.find((item:any) => item.id === id);
         const likes = updatedItem ? updatedItem.postLike : false;
     
         if (user) {
