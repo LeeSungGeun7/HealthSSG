@@ -25,7 +25,7 @@ interface Post {
         updatedAt: Date;
 }
 
-function page() {
+function Page() {
     const {data: session} = useSession();
     //user.data?.user?.email
     const [data , setData] =useState<(Post & { isDeleted: boolean })[]>([]);
@@ -146,4 +146,4 @@ const DeleteButton = React.memo(({ itemId, isDeleted, onToggle, isDel }:any) => 
     );
   });
 
-export default page
+export default Page

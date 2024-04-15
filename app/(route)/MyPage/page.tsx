@@ -16,7 +16,7 @@ import Link from 'next/link';
 
 
 
-function page() {
+function Page() {
     const [uploadUrl , setUploadUrl] = useState("");
     const [imageId , setImageId] = useState("");
     const [user,setUser] = useRecoilState(userAtom);
@@ -154,4 +154,4 @@ function page() {
   )
 }
 
-export default page
+export default Page;

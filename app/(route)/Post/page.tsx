@@ -22,7 +22,7 @@ interface DataProps {
 
 
 
-function page() {
+function Page() {
     const trigger = useRef<HTMLSpanElement>(null);
     const [loading , setLoading] = useState(false);
     const [page , setPage] = useState(0);
@@ -202,4 +202,4 @@ function page() {
   )
 }
 
-export default page
+export default Page

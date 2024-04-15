@@ -9,7 +9,7 @@ import { userAtom } from '@/states/userAtom';
 
 
 
-function page() {
+function Page() {
     const [preview , setPreview] = useState("");
     const [uploadUrl , setUploadUrl] = useState("");
     const [imageId , setImageId] = useState("");
@@ -110,4 +110,4 @@ function page() {
   )
 }
 
-export default page
+export default Page
