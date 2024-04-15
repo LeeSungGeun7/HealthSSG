@@ -13,7 +13,7 @@ import Image from 'next/image';
 
 function SideBar() {
     const [isOpen , setIsOpen] = useState(false)
-    const arrs = ["Home", "Chat" , "Post", "Contact"]
+    const arrs = ["Home", "MyPage" , "Post", "Contact"]
     const [isActive, setIsActive] = useState(0)
     const pathName =usePathname()
     const notAllowed = [ "/write"]
@@ -100,7 +100,7 @@ function SideBar() {
                 <React.Fragment key={idx}>
                  <div >
                     <div  onClick={()=>{handleIsActive(e)}} className= {` flex justify-start items-center `}>
-                        {e == "Home" && <AiOutlineHome  className={`${isActive == 1 ? "text-blue-500" : "text-black"}`}/>}
+                        {/* {e == "Home" && <AiOutlineHome  className={`${isActive == 1 ? "text-blue-500" : "text-black"}`}/>} */}
                         {e == "Chat" && <TbMessageChatbot  className={`${isActive == 2 ? "text-blue-500" : "text-black"}`}/>  }
                         {e == "live" && <TbMessageChatbot  className={`${isActive == 3 ? "text-white" : "text-black"}`}/>  }
                         <Div   name={e} number={isActive}></Div>

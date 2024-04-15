@@ -7,12 +7,10 @@ import { userAtom } from '@/states/userAtom';
 import { getUploadUrl, uploadWrite } from '../write/actions';
 import { UserInfoChange } from './actions';
 import Image from 'next/image';
-
-
-
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
-import { revalidatePath, revalidateTag } from 'next/cache';
+import Link from 'next/link';
+
 
 
 
@@ -115,6 +113,7 @@ function page() {
      
   return (
     <div className='bg-slate-200 flex flex-col justify-center items-center w-[100%] h-screen '>
+         <Link href={'/mypost'} className='flex justify-center text-[15px] w-[80px] absolute left-0 top-12 m-6 rounded-md bg-white text-black'>My Post</Link>
           <form  action={action}  className='flex flex-col justify-center items-center h-[70%] w-[85%]' >
           <div className='relative rounded-full bg-slate-600 w-[230px] h-[235px] flex items-center justify-center'>
                 <label className='rounded-full w-full h-[100%]' htmlFor="thumbnail">       

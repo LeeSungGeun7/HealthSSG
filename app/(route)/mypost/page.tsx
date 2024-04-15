@@ -7,6 +7,7 @@ import { deleteMyPost, getMyPost } from './action';
 import { MdDelete } from "react-icons/md";
 import Image from 'next/image';
 import Modal from '@/components/Modal/Modal';
+import { BsCheckAll } from "react-icons/bs";
 
 const center = "flex justify-center items-center"
 
@@ -47,6 +48,17 @@ function page() {
           return newSet;
         });
       }
+
+      function handleAllSelect() {
+        if (deleteItems.size === data.length) {
+          deleteItems.clear();
+        } else {
+          data.forEach((e)=>{
+            deleteItems.add(e.id)
+          })
+        }
+      }
+
       
       function handelIsDelete() {
 
@@ -82,14 +94,15 @@ function page() {
 
           </div>
           <div className='flex items-center justify-end w-[50%]'>
+          {isDel && <BsCheckAll onClick={()=>{handleAllSelect(); setTrigger(!trigger)}} className='w-[20px] h-[20px]'>All</BsCheckAll>}
             <MdDelete className='m-4 w-[30px] h-[30px]' onClick={()=>{handelIsDelete()}}/>
           </div>
           
         </div>
-        <div className='overflow-scroll gap-2 grid grid-cols-3 w-[100%] h-[90%] sm:w-[85%] sm:h-[80%] bg-slate-100'>
+        <div className='overflow-scroll gap-1 p-4 grid-rows-3 justify-center grid sm:grid-cols-3 grid-cols-2 w-[100%] h-[90%] sm:w-[85%] sm:h-[80%] bg-slate-100'>
         {data.map((item, idx) => {
   return (
-    <div key={idx} className='flex justify-center items-center relative bg-white w-[200px] h-[200px]'>
+    <div key={idx} className='flex justify-center items-center relative bg-white w-[200px] md:[250px] sm:w-[220px] h-[200px]'>
       {item.title}
       <Image className='absolute w-full h-full' src={`${item.thumbnail}/medium`} width={100} height={100} alt=""/>
       <DeleteButton
@@ -121,12 +134,15 @@ const DeleteButton = React.memo(({ itemId, isDeleted, onToggle, isDel }:any) => 
   
     return (
       isDel &&
+      <>
       <button
         onClick={onToggle}
         className={`m-2 absolute right-4 top-0 rounded-full w-[20px] h-[20px] ${
           isDeleted ? 'bg-black' : 'bg-slate-300'
         }`}
       ></button>
+      
+      </>
     );
   });
 

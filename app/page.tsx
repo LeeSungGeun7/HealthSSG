@@ -229,7 +229,7 @@ export default function Home() {
   return(
     <div ref={outerDivRef}
      className='snap-y snap-mandatory scroll-y overflow-y-scroll h-[100vh] bg-#D0CFCE '>
-        <div className='fixed sm:left-[80px] z-[1000] left-[20px] top-7 font-jalnan2'>{page==3 && "Project"}{page==2 && "Skills"}{page==4 && "Recently Post"}</div>
+        <div className={`${page ==2 ? "text-white" : "text-black"} fixed sm:left-[80px] z-[1000] left-[20px] top-7 font-jalnan2`}>{page==3 && "Project"}{page==2 && "Skills"}{page==4 && "Recently Post"}</div>
         <Dots num={null} currentPage={page}/>
         <div className={`${inner} bg-#D0CFCE`}>
             <div className='flex flex-col  text-[30px] font-jalnan2  text-white flex-start bg-#D0CFCE h-[80%] w-[80%]'>

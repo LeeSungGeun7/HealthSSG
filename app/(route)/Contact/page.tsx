@@ -11,7 +11,7 @@ import { IoArrowBackOutline } from "react-icons/io5";
 import { useRecoilState } from 'recoil';
 import { userAtom } from '@/states/userAtom';
 import { CreateContactRe, ReadContactRe } from './action';
-import { useSession } from 'next-auth/react';
+
 import { getDayMinuteCounter } from "@/utils/TimeCal";
 
 
@@ -54,7 +54,7 @@ const Reply = ({setTurn,comments}: {setTurn: ()=> void; comments: Comment[] | un
 
 function Page() {
   const [reply, setReply] = useState("")
-  const [turn,setTurn] = useState(true);
+  const [turn,setTurn] = useState(false);
 
 
 

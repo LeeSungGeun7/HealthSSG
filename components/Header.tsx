@@ -10,18 +10,31 @@ import debounce from 'lodash/debounce';
 import { FaHome } from "react-icons/fa";
 import { IoPerson } from "react-icons/io5";
 import { PiReadCvLogoLight } from "react-icons/pi";
-
+import Modal from './Modal/Modal';
+import { KakaoLogout } from "@/actions/KaKaoLogout";
 
 
 
 const center = "flex justify-center items-center"
 
 
-
-function Header({setIsModalOpen}:any) {
+// Header 매개변수 {setIsModalOpen}:any
+function Header() {
   const route = useRouter();
   const users = useSession();
 
+
+  //--------
+  const [isModalOpen , setIsModalOpen] = useState(false);
+  const [ACCESS_TOKEN , setACCESS_TOKEN] = useState(typeof window !== 'undefined' ? localStorage.getItem("access_token") : 0);
+  useEffect(()=> {
+    if (typeof window ! == 'undefined') {
+      setACCESS_TOKEN(localStorage.getItem("access_token")); 
+      
+    }
+  },[])
+
+  //---------
   
     const [width, setWidth] = useState(window?.innerWidth);
   
@@ -82,15 +95,29 @@ function Header({setIsModalOpen}:any) {
       };
       fetchUser();
     }, [users.data?.user?.email]);
+
+  
   
     if (width && width < 400) {
       return(
+        <>
         <div className='z-[1000] flex justify-around items-center fixed bottom-0 w-full h-[50px] bg-slate-200'>
                   <div onClick={()=>{handleLocate("")}} className={`${center} w-[20%] h-[80%] bg-slate-100`}><FaHome/></div>
                   <div onClick={()=>{handleLocate("MyPage")}} className={`${center} w-[20%] h-[80%] bg-slate-100`}><IoPerson/></div>
                   <div onClick={()=>{handleLocate("Post")}} className={`${center} w-[20%] h-[80%] bg-slate-100`}><PiReadCvLogoLight/></div>
                   <div className={`${center} w-[20%] h-[80%] bg-slate-100`}></div>
           </div>
+          <Modal isOpen={isModalOpen} setIsModalOpen={setIsModalOpen} onClick={
+            async ()=>{
+              const res= await KakaoLogout(ACCESS_TOKEN)
+              if (res) {
+                localStorage.removeItem('access_token');
+                setIsModalOpen(false);
+                
+              }
+            }}
+            >로그아웃 하시겠습니까?</Modal>
+            </>
       )
         
     }
@@ -109,7 +136,16 @@ function Header({setIsModalOpen}:any) {
               </div>
             
             </div>
-            
+            <Modal isOpen={isModalOpen} setIsModalOpen={setIsModalOpen} onClick={
+            async ()=>{
+              const res= await KakaoLogout(ACCESS_TOKEN)
+              if (res) {
+                localStorage.removeItem('access_token');
+                setIsModalOpen(false);
+                
+              }
+            }}
+            >로그아웃 하시겠습니까?</Modal>
           </div>
         );
       }
@@ -131,6 +167,7 @@ function Header({setIsModalOpen}:any) {
         </div>
         </>
       );
+      
     }
   
 
