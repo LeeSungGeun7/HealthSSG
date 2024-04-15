@@ -36,7 +36,7 @@ interface Comment {
   id :number;
   like : number; 
   userId : number;
-  postId : number;
+  postId : number | null;
   text: string;
   user: User;
   created_at : Date; 
