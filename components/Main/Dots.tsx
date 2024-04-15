@@ -3,7 +3,7 @@ import { slideAtom } from '@/states/slideAtom';
 
 interface DotProps {
     currentPage : Number ,
-    num : Number | null,
+    num : Number | null
 
 }
 
@@ -12,7 +12,9 @@ const Dot = ({ num, currentPage }:DotProps) => {
     const [page , setPage] = useRecoilState(slideAtom);
     return (
       <div
-        onClick={()=>{setPage(num)}}
+        onClick={() => 
+          
+          {if (num !== null) setPage(num.valueOf())}}
         style={{
           width: 10,
           height: 10,

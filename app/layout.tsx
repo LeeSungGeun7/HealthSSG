@@ -76,18 +76,14 @@
 
 
 import { Inter } from "next/font/google";
-import { SessionProvider, signOut} from "next-auth/react"
+
 import "./globals.css";
-import Header from "@/components/Header";
-import SideBar from "@/components/SideBar/SideBar";
-import { RecoilRoot, useRecoilState } from "recoil";
-import Modal from "@/components/Modal/Modal";
 
 
 import { Metadata } from "next";
 
 import RecoilRootWrapper from "@/components/RecoilRootWrapper";
-import Head from "next/head";
+
 
 
 

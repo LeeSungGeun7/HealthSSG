@@ -1,4 +1,5 @@
-import { getUploadUrl } from '@/app/api/write/route';
+
+import { getUploadUrl } from '@/app/(route)/write/actions';
 import React, { useState } from 'react'
 
 function UploadImage({setImageId,setUploadUrl,register}:any) {
