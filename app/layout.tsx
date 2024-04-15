@@ -107,7 +107,9 @@ declare global {
 export const metadata: Metadata = {
   title: "이성근 , Frontend Developer",
   description: "이성근 프론트엔드 개발자의 블로그, Frontend Developer",
-
+  icons:{
+    icon:'/logo.ico'
+  }
 };
 
 export default function RootLayout({
