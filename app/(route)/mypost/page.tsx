@@ -130,7 +130,7 @@ function Page() {
   )
 }
 
-const DeleteButton = React.memo(({ itemId, isDeleted, onToggle, isDel }:any) => {
+const DeleteButton = React.memo(({isDeleted, onToggle, isDel }:any) => {
   
     return (
       isDel &&
@@ -145,5 +145,6 @@ const DeleteButton = React.memo(({ itemId, isDeleted, onToggle, isDel }:any) => 
       </>
     );
   });
+  DeleteButton.displayName = 'DeleteButton';
 
 export default Page

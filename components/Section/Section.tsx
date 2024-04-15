@@ -31,7 +31,20 @@ function Icon({children, color}:any) {
 
 
 function Section({num}:any) {
-    
+    const [items, setItems]:any = useState(["현재 포스트가 없습니다."]);
+        const [loading ,setLoading] = useState(false);
+        useEffect(() =>  {
+            async function getData() { 
+                const res = await getRecentPost();
+                setLoading(true);
+                if (res) {
+                    setItems(res);
+                    setLoading(false);
+                } 
+            }
+        getData();
+        
+        },[])
     
 
   switch (num) {
@@ -129,7 +142,7 @@ function Section({num}:any) {
                                 <p>나혼자 하는 개발이 아닌</p>
                                 <p>사람과의 신뢰를 중요하게 생각하고있어요</p>
                                 <div className='hidden sm:flex'>
-                                    <Image src={""}/>
+
                                 </div>
                             </div>
                     </div>
@@ -152,20 +165,7 @@ function Section({num}:any) {
         )
     
     case 4 : 
-        const [items, setItems]:any = useState(["현재 포스트가 없습니다."]);
-        const [loading ,setLoading] = useState(false);
-        useEffect(() =>  {
-            async function getData() { 
-                const res = await getRecentPost();
-                setLoading(true);
-                if (res) {
-                    setItems(res);
-                    setLoading(false);
-                } 
-            }
-        getData();
-        
-        },[])
+    
         
         return (
             <div className={`relative font-jalnan2  ${inner} bg-#D0CFCE`}>

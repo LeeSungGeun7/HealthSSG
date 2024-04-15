@@ -164,7 +164,7 @@ function Page() {
           {
             data.map((e:any)=>{
               return(
-                <div  key={e.id} className='flex flex-col justify-center items-center m-[5px] shadow-md  w-[100%] h-[400px] md:h-[500px] ' key={e.id}>
+                <div  key={e.id} className='flex flex-col justify-center items-center m-[5px] shadow-md  w-[100%] h-[400px] md:h-[500px] ' >
                     <div  className='relative bg-slate-500 w-[100%] h-[60%]'>
                         <Image priority fill className='object-fit w-[100%] h-[100%]' src={`${e.thumbnail}/public`}  alt="" />
                         <span className='top-0 absolute flex items-center p-4 w-[100%] h-[40%] '>
