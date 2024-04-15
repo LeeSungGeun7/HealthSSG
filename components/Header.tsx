@@ -17,15 +17,17 @@ import { isBrowser } from '@/utils/isBrowser';
 
 
 const center = "flex justify-center items-center"
-
+function useWindow() {
+  const isBrowser = typeof window !== 'undefined';
+  return isBrowser ? window : undefined;
+}
 
 // Header 매개변수 {setIsModalOpen}:any
 function Header() {
+  const window = useWindow();
   const route = useRouter();
   const users = useSession();
-  if (!isBrowser) {
-    return null; // 서버에서는 렌더링하지 않음
-  }
+  
 
   //--------
   const [isModalOpen , setIsModalOpen] = useState(false);
@@ -50,8 +52,10 @@ function Header() {
 
   
   const handleResize = debounce(() => {
+    if(window) {
     setWidth(window.innerWidth);
-  },200);
+ } },200)
+;
 
 
   useEffect(()=> {
@@ -61,12 +65,14 @@ function Header() {
   },[])
   
   useEffect(() => {
+    if(window) {
       window.addEventListener("resize", handleResize);
       console.log(width);
       return () => {
           // cleanup
           window.removeEventListener("resize", handleResize);
       };
+    }
   }, [width]);
 
     const { data: session, status } = useSession();
