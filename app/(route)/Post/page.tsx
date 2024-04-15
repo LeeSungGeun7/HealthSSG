@@ -100,9 +100,7 @@ function Page() {
      const response = await fetch(`/api/data?userId=${user?.id}`,{
       method:"GET" 
      })   
-      // const res = await response.json();
-      // console.log('Response status:', response.status);
-      // setData(res);
+      
     }
     useEffect(()=> {
       handleFetch()
