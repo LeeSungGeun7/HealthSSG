@@ -8,7 +8,7 @@ export async function getMyPost(userEmail:string) {
     if (!userEmail || userEmail == "") {
         return 
     }
-    const user = prisma.user.findFirst({
+    const user = await prisma.user.findFirst({
         where: {
             email : userEmail
         } ,
@@ -19,6 +19,7 @@ export async function getMyPost(userEmail:string) {
     if (!user) {
         return [];
     }
+    
     const posts = prisma.post.findMany({
         where: {
             userId : user.id,
