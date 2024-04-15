@@ -13,11 +13,14 @@ import { isBrowser } from '@/utils/isBrowser';
 const inner = "flex h-[100vh]  justify-center items-center text-lg"
 
 
+function useWindow() {
+  const isBrowser = typeof window !== 'undefined';
+  return isBrowser ? window : undefined;
+}
+
 
 export default function Home() {
-  if (!isBrowser) {
-    return null; // 서버에서는 렌더링하지 않음
-  }
+  const window = useWindow();
   const DIVIDER_HEIGHT = 5 ;
   const outerDivRef:any = useRef();
   const [page , setPage] = useRecoilState(slideAtom);
@@ -38,6 +41,7 @@ export default function Home() {
   
   
   useEffect(() => {
+    if (window) {
     const sectionHeights:any = [
       window.innerHeight,
       window.innerHeight * 2 + DIVIDER_HEIGHT,
@@ -62,11 +66,13 @@ export default function Home() {
     return () => {
       localStorage.setItem('memo' , page+"");
     }
+  }
 
   }, []);
 
 
   useEffect(() => {
+    if( window) {
     const wheelHandler = (e:any) => {
       e.preventDefault();
       const { deltaY } = e;
@@ -167,6 +173,7 @@ export default function Home() {
           setPage(5);
         }
       }
+    
     };
   
     const outerDivRefCurrent = outerDivRef.current;
@@ -175,6 +182,7 @@ export default function Home() {
     return () => {
       outerDivRefCurrent.removeEventListener("wheel", wheelHandler);
     };
+  }
   }, []);
 
     
