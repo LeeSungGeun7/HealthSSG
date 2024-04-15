@@ -9,11 +9,15 @@ import Image from 'next/image';
 import Section from '@/components/Section/Section';
 import img1 from "@/public/images/IphoneFrame.png"
 import { AnimatePresence, motion } from 'framer-motion';
+import { isBrowser } from '@/utils/isBrowser';
 const inner = "flex h-[100vh]  justify-center items-center text-lg"
 
 
 
 export default function Home() {
+  if (!isBrowser) {
+    return null; // 서버에서는 렌더링하지 않음
+  }
   const DIVIDER_HEIGHT = 5 ;
   const outerDivRef:any = useRef();
   const [page , setPage] = useRecoilState(slideAtom);

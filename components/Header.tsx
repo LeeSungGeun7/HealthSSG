@@ -12,6 +12,7 @@ import { IoPerson } from "react-icons/io5";
 import { PiReadCvLogoLight } from "react-icons/pi";
 import Modal from './Modal/Modal';
 import { KakaoLogout } from "@/actions/KaKaoLogout";
+import { isBrowser } from '@/utils/isBrowser';
 
 
 
@@ -22,7 +23,9 @@ const center = "flex justify-center items-center"
 function Header() {
   const route = useRouter();
   const users = useSession();
-
+  if (!isBrowser) {
+    return null; // 서버에서는 렌더링하지 않음
+  }
 
   //--------
   const [isModalOpen , setIsModalOpen] = useState(false);
