@@ -26,6 +26,7 @@ interface Post {
 }
 
 function Page() {
+  DeleteButton.displayName = 'DeleteButton';
     const {data: session} = useSession();
     //user.data?.user?.email
     const [data , setData] =useState<(Post & { isDeleted: boolean })[]>([]);
