@@ -75,7 +75,7 @@ export async function CreateContactRe(userId:number , content:string) {
     
 }
 
-export async function ReadContactRe(): Promise<Contact[]> {
+export async function ReadContactRe() {
     const data = await prisma.contact.findMany({
         where:{
             id: 1 
@@ -88,7 +88,7 @@ export async function ReadContactRe(): Promise<Contact[]> {
             },
         }
     })
-    return data;
+    return data ;
 }
 
 export async function DelContactRe(commentId:number,userId:number) {
