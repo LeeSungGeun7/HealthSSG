@@ -11,16 +11,6 @@ import { userAtom } from '@/states/userAtom';
 
 
 
-interface DataProps {
-  id : number ; 
-  title : string; 
-  body : string ;
-  thumbnail : string ;
-  created_at : Date ;
-  
-}
-
-
 
 function Page() {
     const trigger = useRef<HTMLSpanElement>(null);
