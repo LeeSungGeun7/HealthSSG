@@ -63,7 +63,7 @@ export default function Home() {
 
 
   useEffect(() => {
-    const wheelHandler = (e) => {
+    const wheelHandler = (e:any) => {
       e.preventDefault();
       const { deltaY } = e;
       const { scrollTop } = outerDivRef.current;
