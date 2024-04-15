@@ -12,21 +12,7 @@ import Slider, { SliderSkill } from './Slider'
 
 const inner = "flex h-[100vh] justify-center items-center text-lg"
 const center = "m-2 flex justify-center items-center"
-const variants = {
 
-}
-
-function Icon({children, color}:any) {
-    return (
-    <motion.div 
-    className={`whitespace-normal text-black bg-white text-[${color}] text-[1.0rem] p-[5px] mx-4 hover:bg-white rounded-md ${center} flex-col h-[30%] w-[20%]`}
-    whileHover={{scale : 1.1}}
-    whileTap = {{scale : 0.9}}
-    >
-       {children}
-    </motion.div> 
-    )
-}
 
 
 
