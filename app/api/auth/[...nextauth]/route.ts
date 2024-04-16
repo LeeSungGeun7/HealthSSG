@@ -2,12 +2,19 @@
 import NextAuth from "next-auth";
 import KakaoProvider from "next-auth/providers/kakao"
 import { PrismaClient } from "@prisma/client";
-
+import { NextAuthOptions } from 'next-auth'
 
 
 const prisma = new PrismaClient();
 
+declare module 'next-auth' {
+  interface NextAuthOptions {
+    url?: string
+  }
+}
+
 const handler = NextAuth({
+
   cookies: {
     // 쿠키 옵션 설정
     sessionToken: {
@@ -21,6 +28,7 @@ const handler = NextAuth({
     },
   },
   secret: process.env.NEXTAUTH_SECRET,
+  url: process.env.NEXTAUTH_URL ,
   providers: [
     KakaoProvider({
         clientId: process.env.NEXT_PUBLIC_KAKAO_CLIENT_ID as string,
@@ -31,6 +39,7 @@ const handler = NextAuth({
       ,
     // 다른 인증 제공자 추가
   ],
+
   callbacks: {
     async signIn({ user, account, profile }) {
       const email = user.email; // 프로바이더로부터 받은 이메일

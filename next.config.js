@@ -28,10 +28,6 @@ const nextConfig = {
       ],
     },
   };
-  NextAuth({
-    // ...
-    url: process.env.NEXTAUTH_URL,
-    // ...
-  }),
+  
   
   module.exports = nextConfig;
