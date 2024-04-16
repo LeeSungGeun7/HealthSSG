@@ -3,7 +3,7 @@ import NextAuth from "next-auth";
 import KakaoProvider from "next-auth/providers/kakao"
 import { PrismaClient } from "@prisma/client";
 import { NextAuthOptions } from 'next-auth'
-import { setCookie } from "nookies";
+
 
 
 const prisma = new PrismaClient();
