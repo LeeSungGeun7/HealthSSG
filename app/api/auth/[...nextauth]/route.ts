@@ -37,13 +37,14 @@ const handler = NextAuth({
    //url: process.env.NEXTAUTH_URL ,
   providers: [
     KakaoProvider({
-        clientId: process.env.NEXT_PUBLIC_KAKAO_CLIENT_ID || "",
-        clientSecret: process.env.NEXT_PUBLIC_KAKAO_SECRET  || "",
+        clientId: process.env.NEXT_PUBLIC_KAKAO_CLIENT_ID as string,
+        clientSecret: process.env.NEXT_PUBLIC_KAKAO_SECRET  as string,
       },
-      
       )      ,
+
     // 다른 인증 제공자 추가
   ],
+  secret: 'IamVeryHandsome' ,
 
   callbacks: {
     async signIn({ user }) {
