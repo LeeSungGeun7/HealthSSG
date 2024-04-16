@@ -8,6 +8,7 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 const handler = NextAuth({
+  secret: process.env.NEXTAUTH_SECRET,
   providers: [
     KakaoProvider({
         clientId: process.env.NEXT_PUBLIC_KAKAO_CLIENT_ID as string,
