@@ -39,7 +39,6 @@ const handler = NextAuth({
     KakaoProvider({
         clientId: process.env.NEXT_PUBLIC_KAKAO_CLIENT_ID || "",
         clientSecret: process.env.NEXT_PUBLIC_KAKAO_SECRET  || "",
-        idToken: true
       },
       
       )      ,
@@ -74,7 +73,7 @@ const handler = NextAuth({
         } catch (error) {
           // 데이터베이스 오류 처리
           console.error("User signIn error:", error);
-          return true
+          return false
           // return false; // 로그인 실패 처리
         }
       } else {
