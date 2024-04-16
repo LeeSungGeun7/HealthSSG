@@ -37,8 +37,8 @@ const handler = NextAuth({
    //url: process.env.NEXTAUTH_URL ,
   providers: [
     KakaoProvider({
-        clientId: process.env.KAKAO_CLIENT_ID as string,
-        clientSecret: process.env.KAKAO_SECRET  as string,
+        clientId: process.env.NEXT_PUBLIC_KAKAO_CLIENT_ID as string,
+        clientSecret: process.env.NEXT_PUBLIC_KAKAO_SECRET  as string,
       },
       )      ,
 
