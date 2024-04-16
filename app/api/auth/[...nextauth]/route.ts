@@ -44,7 +44,7 @@ const handler = NextAuth({
 
     // 다른 인증 제공자 추가
   ],
-  secret: 'IamVeryHandsome' ,
+
 
   callbacks: {
     async signIn({ user }) {
