@@ -108,4 +108,4 @@ const handler = NextAuth({
 export {handler as GET , handler as POST}
 
 
-app/api/auth/[...nextauth].js
+
