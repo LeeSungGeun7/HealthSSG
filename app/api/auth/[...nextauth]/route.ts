@@ -74,7 +74,7 @@ const handler = NextAuth({
         } catch (error) {
           // 데이터베이스 오류 처리
           console.error("User signIn error:", error);
-          throw new Error("Sign-in failed")
+          return true
           // return false; // 로그인 실패 처리
         }
       } else {
