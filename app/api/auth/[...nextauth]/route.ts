@@ -14,7 +14,7 @@ declare module 'next-auth' {
 }
 
 const handler = NextAuth({
-
+  
   cookies: {
     // 쿠키 옵션 설정
     sessionToken: {
@@ -33,8 +33,11 @@ const handler = NextAuth({
     KakaoProvider({
         clientId: process.env.NEXT_PUBLIC_KAKAO_CLIENT_ID as string,
         clientSecret: process.env.NEXT_PUBLIC_KAKAO_SECRET as string,
-      }
+        checks: ['none']
+      },
+      
       )
+
       
       ,
     // 다른 인증 제공자 추가
