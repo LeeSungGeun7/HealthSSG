@@ -9,7 +9,7 @@ import Router from 'next/router';
 
 
 function Page() {
-    //const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_KAKAO_CLIENT_ID}&redirect_uri=${process.env.NEXT_PUBLIC_KAKAO_REDIRECT_URI}&response_type=code`;
+    // const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_KAKAO_CLIENT_ID}&redirect_uri=${process.env.NEXT_PUBLIC_KAKAO_REDIRECT_URI}&response_type=code`;
     const {data : session} = useSession();
     const route = Router
     const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.NEXT_PUBLIC_KAKAO_CLIENT_ID}&redirect_uri=${process.env.NEXT_PUBLIC_KAKAO_REDIRECT_URI}`;
@@ -35,6 +35,9 @@ function Page() {
             <Link href={KAKAO_AUTH_URL} className='text-[#371D1E] text-lg ml-[10%] w-[80%] mt-10 p-10 flex justify-center items-center bg-[#FAE100]'>
                 카카오 로그인
             </Link>
+            <button onClick={()=>{signIn("kakao")}} className='text-[#371D1E] text-lg ml-[10%] w-[80%] mt-10 p-10 flex justify-center items-center bg-[#FAE100]'>
+                카카오 로그인2
+            </button>
            
         </div>
     </div>

@@ -37,9 +37,9 @@ const handler = NextAuth({
    //url: process.env.NEXTAUTH_URL ,
   providers: [
     KakaoProvider({
-        clientId: process.env.NEXT_PUBLIC_KAKAO_CLIENT_ID as string,
-        clientSecret: process.env.NEXT_PUBLIC_KAKAO_SECRET  as string,
-        
+        clientId: process.env.NEXT_PUBLIC_KAKAO_CLIENT_ID || "",
+        clientSecret: process.env.NEXT_PUBLIC_KAKAO_SECRET  || "",
+        idToken: true
       },
       
       )      ,
@@ -48,7 +48,7 @@ const handler = NextAuth({
 
   callbacks: {
     async signIn({ user }) {
-      const email = user.email; // 프로바이더로부터 받은 이메일
+      const email = user.email ;
       console.log(email);
       if (email) {
         try {
