@@ -32,9 +32,9 @@ const handler = NextAuth({
   //     },
   //   },
   // },
-   secret: process.env.NEXTAUTH_SECRET,
+   //secret: process.env.NEXTAUTH_SECRET,
   
-   url: process.env.NEXTAUTH_URL ,
+   //url: process.env.NEXTAUTH_URL ,
   providers: [
     KakaoProvider({
         clientId: process.env.NEXT_PUBLIC_KAKAO_CLIENT_ID as string,
@@ -78,7 +78,7 @@ const handler = NextAuth({
         }
       } else {
         // 이메일이 없는 경우 로그인 실패 처리
-        return false;
+        return false ;
       }
     },
     
