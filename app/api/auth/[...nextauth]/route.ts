@@ -3,9 +3,12 @@ import NextAuth from "next-auth";
 import KakaoProvider from "next-auth/providers/kakao"
 import { PrismaClient } from "@prisma/client";
 import { NextAuthOptions } from 'next-auth'
+import { setCookie } from "nookies";
 
 
 const prisma = new PrismaClient();
+
+
 
 declare module 'next-auth' {
   interface NextAuthOptions {
@@ -15,37 +18,35 @@ declare module 'next-auth' {
 
 const handler = NextAuth({
   
-  cookies: {
-    // 쿠키 옵션 설정
-    sessionToken: {
-      name: `__Secure-next-auth.session-token`,
-      options: {
-        httpOnly: true,
-        sameSite: 'lax',
-        path: '/',
-        secure: true, // 이 옵션은 HTTPS 환경에서만 작동합니다.
-      },
-    },
-  },
-  secret: process.env.NEXTAUTH_SECRET,
-  url: process.env.NEXTAUTH_URL ,
+  // cookies: {
+  //   // 쿠키 옵션 설정
+  //   sessionToken: {
+  //     name: `__Secure-next-auth.session-token`,
+  //     options: {
+  //       httpOnly: true,
+  //       sameSite: 'lax',
+  //       path: '/',
+  //       // secure: false, // 이 옵션은 HTTPS 환경에서만 작동합니다.
+  //     },
+  //   },
+  // },
+  //  secret: process.env.NEXTAUTH_SECRET,
+  
+   url: process.env.NEXTAUTH_URL ,
   providers: [
     KakaoProvider({
         clientId: process.env.NEXT_PUBLIC_KAKAO_CLIENT_ID as string,
         clientSecret: process.env.NEXT_PUBLIC_KAKAO_SECRET as string,
-        checks: ['none']
       },
       
-      )
-
-      
-      ,
+      )      ,
     // 다른 인증 제공자 추가
   ],
 
   callbacks: {
-    async signIn({ user, account, profile }) {
+    async signIn({ user }) {
       const email = user.email; // 프로바이더로부터 받은 이메일
+      console.log(email);
       if (email) {
         try {
           // 데이터베이스에서 사용자 조회
