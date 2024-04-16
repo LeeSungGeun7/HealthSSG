@@ -18,25 +18,29 @@ declare module 'next-auth' {
 
 const handler = NextAuth({
   
-  // cookies: {
-  //   // 쿠키 옵션 설정
-  //   sessionToken: {
-  //     name: `__Secure-next-auth.session-token`,
-  //     options: {
-  //       httpOnly: true,
-  //       sameSite: 'lax',
-  //       path: '/',
-  //       // secure: false, // 이 옵션은 HTTPS 환경에서만 작동합니다.
-  //     },
-  //   },
-  // },
-  //  secret: process.env.NEXTAUTH_SECRET,
+  cookies: {
+    // 쿠키 옵션 설정
+    sessionToken: {
+      name: `__Secure-next-auth.session-token`,
+      options: {
+        httpOnly: true,
+        sameSite: 'lax',
+        path: '/',
+         secure: true, // 이 옵션은 HTTPS 환경에서만 작동합니다.
+      },
+    },
+  },
+   secret: process.env.NEXTAUTH_SECRET,
   
    url: process.env.NEXTAUTH_URL ,
   providers: [
     KakaoProvider({
         clientId: process.env.NEXT_PUBLIC_KAKAO_CLIENT_ID as string,
         clientSecret: process.env.NEXT_PUBLIC_KAKAO_SECRET as string,
+        authorization: {
+          params: {},
+        },
+        checks: ['none'],
       },
       
       )      ,
@@ -102,3 +106,6 @@ const handler = NextAuth({
 });
 
 export {handler as GET , handler as POST}
+
+
+app/api/auth/[...nextauth].js
