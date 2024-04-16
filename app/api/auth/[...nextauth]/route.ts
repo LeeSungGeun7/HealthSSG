@@ -62,7 +62,7 @@ const handler = NextAuth({
             return true;
           } else {
             // 존재하지 않는다면 새로운 사용자 추가
-            const newUser = await prisma.user.create({
+              await prisma.user.create({
               data: {
                 email: email,
                 // 필요한 경우 추가적인 필드 설정
@@ -74,7 +74,8 @@ const handler = NextAuth({
         } catch (error) {
           // 데이터베이스 오류 처리
           console.error("User signIn error:", error);
-          return false; // 로그인 실패 처리
+          throw new Error("Sign-in failed")
+          // return false; // 로그인 실패 처리
         }
       } else {
         // 이메일이 없는 경우 로그인 실패 처리
