@@ -8,6 +8,18 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 const handler = NextAuth({
+  cookies: {
+    // 쿠키 옵션 설정
+    sessionToken: {
+      name: `__Secure-next-auth.session-token`,
+      options: {
+        httpOnly: true,
+        sameSite: 'lax',
+        path: '/',
+        secure: true, // 이 옵션은 HTTPS 환경에서만 작동합니다.
+      },
+    },
+  },
   secret: process.env.NEXTAUTH_SECRET,
   providers: [
     KakaoProvider({

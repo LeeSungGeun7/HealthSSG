@@ -1,5 +1,9 @@
 const nextConfig = {
+  env: {
+    NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
+  },
   async headers() {
+    
     return [
       {
         source: "/api/:path*",
@@ -24,5 +28,10 @@ const nextConfig = {
       ],
     },
   };
+  NextAuth({
+    // ...
+    url: process.env.NEXTAUTH_URL,
+    // ...
+  }),
   
   module.exports = nextConfig;
