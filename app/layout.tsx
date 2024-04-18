@@ -124,6 +124,7 @@ export default function RootLayout({
   return (
     //  <SessionProvider >
       <>
+      <meta name="naver-site-verification" content="a654ebea498ce63dd21f867a77d0a6735bdb2301" />
       {/* <Head>
 			<title>이성근 프론트엔드 개발자</title>
 		</Head> */}
