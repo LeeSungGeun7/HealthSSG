@@ -17,9 +17,10 @@ const boxVariants = {
     opacity: 1,
     x: 0,
     scale: 1,
-    transition: { duration: 0.7 }
+    transition: { duration: 0 }
   },
   exit: (back: boolean) => ({
+    y: 500 ,
     x: back ? 100 : -100,
     opacity: 0,
     scale: 0,
@@ -30,47 +31,47 @@ const boxVariants = {
 function ETA({children , visible}:any) {
     if (visible == 0) {
         return (
-        
-            // <div className="flex items-center flex-col justify-center    w-full ">
-            //     {children}
-            //     <div className="h-[90%] w-full ">
-            //         <p className="h-[60%] text-[14px]">개인용 블로그 제작 저만의 이야기를 담아 앞으로의 커리어를 정리하기 위해 제작 되었습니다. </p> 
-            //         <p className="text-[15px]]">주요기능 - 게시물 </p>
-            //         <p className="text-[15px]">1인 제작 3/1 ~ 3/30</p>    
-            //         <p className="text-[12px]">stack - Next.js 14 , React , TypeScript, Tailwind Css  </p>
-            //     </div>
-            // </div>
             <div className="flex items-center flex-col justify-center  w-full ">
                 {children}
+                <div className="h-[50%] w-[80%] ">
+                    <div className="flex flex-col items-center">
+                      <p className="m-2 h-[60%] text-[11px]"> </p> 
+                     <p className="m-4 text-[12px]]">블로그</p>
+                     <p className="text-[12px]">1인 제작 3/1 ~ 3/30</p>    
+                     <p className="text-[12px]">stack - Next.js 14 , React , TypeScript, Tailwind Css  </p>
+                    </div>
+                     
+                 </div>
             </div>
         )
     } else if (visible == 1) {
         return (
             <div className="flex items-center flex-col justify-center  w-full ">
             {children}
-            {/* <div className="h-[90%] w-full ">
-                <p className="h-[60%] text-[14px]">사용자의 위치기반 소셜 미디어 </p> 
-                <p>주요 역할 </p>
-                <p>*  </p>
-                
-                
-                <p className="text-[15px]]">주요기능 - 소셜 </p>
-                <p className="text-[15px]">5인 제작 2023-05 ~ 2023-8</p>    
-                <p className="text-[12px]">stack -  React , JavaScript , Styled-Component , Java , Spring Boot </p>
-            </div> */}
+            <div className="h-[50%] w-[80%] ">
+                    <div className="flex flex-col items-center">
+                      <p className="m-2 h-[60%] text-[11px]">실시간 인구 혼잡도 데이터와 카카오맵을 활용하여 소통하는 소셜미디어 </p> 
+                     <p className="m-4 text-[12px]]">소셜</p>
+                     <p className="text-[12px]">4인 제작 - 2023.06.01 ~ 2023.08.03</p>    
+                     <p className="text-[12px]">React.js , Styled-components , Java Spring boot </p>
+                    </div>
+                     
+                 </div>
         </div>
         )
     } else if (visible == 2 ) {
         return (
             <div className="flex items-center flex-col justify-center  w-full ">
                 {children}
-                
-                {/* <div className="h-[90%] w-full ">
-                    <p className="h-[auto] text-[14px]">공공데이터를 활용해 전기차 충전소 위치 및 정보 제공사이트 </p> 
-                    <p className="text-[15px]]">주요기능 - 전기차 충전소 데이터 활용</p>
-                    <p className="text-[15px]">1인 제작 3/1 ~ 3/30</p>    
-                    <p className="text-[12px]">stack -  React , JavaScrpit , Styled-component , Java , Spring boot   </p>
-                </div> */}
+                <div className="h-[30%] w-[80%] ">
+                    <div className="flex flex-col items-center">
+                      <p className="m-2 h-[60%] text-[11px]">공공데이터를 활용하여 전국에 있는 전기차충전소 위치를 보여주는 사이트 </p> 
+                     <p className="m-4 text-[12px]]">전기차 충전소 </p>
+                     <p className="text-[12px]">4인 제작 2023.04.01 ~ 2023.05.15</p>    
+                     <p className="text-[12px]">React.js , Styled-components , Java Spring boot</p>
+                    </div>
+                     
+                 </div>
             </div>
         )
     } else {
@@ -103,7 +104,7 @@ function Slider() {
         <AnimatePresence custom={back}>
           <motion.img
             src={images[visible]}
-            className="flex   h-[100%] w-[100%] sm:w-[100%]"
+            className="flex m-8  h-[60%] w-[100%] sm:w-[50%]"
             custom={back}
             variants={boxVariants}
             initial="entry"

@@ -83,6 +83,7 @@ import "./globals.css";
 import { Metadata } from "next";
 
 import RecoilRootWrapper from "@/components/RecoilRootWrapper";
+import Head from "next/head";
 
 
 
@@ -105,6 +106,9 @@ export const metadata: Metadata = {
   description: "이성근 프론트엔드 개발자의 블로그, Frontend Developer",
   icons:{
     icon:'/logo.ico'
+  },
+  verification: {
+    google: "google-site-verification=XeYNgCCAdlB7S_QFDNsj0P0CFsnnU8yRw52RVF8CCaU"
   }
 };
 
@@ -118,8 +122,11 @@ export default function RootLayout({
   
   
   return (
-    // <SessionProvider >
-      
+    //  <SessionProvider >
+      <>
+      {/* <Head>
+			<title>이성근 프론트엔드 개발자</title>
+		</Head> */}
     <html lang="en">
       <body className={inter.className}>
       {/* <Header/>
@@ -131,8 +138,10 @@ export default function RootLayout({
 
     </html>
 
-    // </SessionProvider>
+   {/* </SessionProvider> */}
+   </>
   );
+
 }
 
 
