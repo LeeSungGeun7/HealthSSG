@@ -47,7 +47,7 @@ Recoil 라이브러리 사용
 
 
 
-
+<img src="https://imagedelivery.net/6i45l_k8v6cNrhGva7A6BA/cf2e53f7-c592-420f-560a-a6ed19070300/public">
 
 문제1 -
 무한스크롤 상세페이지 들어가고나서 이전페이지 복귀후 스크롤 위치 저장 
