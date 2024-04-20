@@ -108,7 +108,7 @@ export const metadata: Metadata = {
     icon:'/logo.ico'
   },
   verification: {
-    google: "google-site-verification=XeYNgCCAdlB7S_QFDNsj0P0CFsnnU8yRw52RVF8CCaU"
+    google: "XeYNgCCAdlB7S_QFDNsj0P0CFsnnU8yRw52RVF8CCaU"
   }
 };
 
