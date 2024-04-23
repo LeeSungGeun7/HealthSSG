@@ -119,7 +119,7 @@ function Page ({params}:Props) {
         </div>
         
         <div className='w-full h-auto bg-slate-200 sm:w-[85%] text-[20px]'>
-          <div className='break-words overflow-hidden min-h-[300px]  bg-slate-100'>
+          <div className='p-4 break-words overflow-hidden min-h-[300px]  bg-slate-100'>
           {data?.body && parse(data.body)}        
           </div>
           
@@ -148,7 +148,7 @@ function Page ({params}:Props) {
               </div>
               <div className='m-2 sm:w-[85%] mb-[70px] sm:mb-[0px] flex justify-center items-center w-full h-[20%] ' >
                   {user ? 
-                <div className='w-full flex justify-evenly'>
+                <div className='mb-8 w-full flex justify-evenly'>
                     <Image alt='' className='w-[50px] h-[50px] rounded-full' src={`${user?.profile}/avatar`} width={50} height={50}/>
                    <input  value={reply} onChange={(e)=>{setReply(e.target.value);}} className='focus:outline-none bg-slate-100 rounded-xl p-4 w-[60%] ' type="text" /> 
                    <motion.button 

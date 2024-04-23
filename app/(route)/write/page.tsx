@@ -85,7 +85,7 @@ function Page() {
                 />
             
             {/* <textarea name="body" id="body" className='mt-4 mb-4 h-[70%] border w-[100%]'></textarea> */}
-            <Tiptap  onChange={(content) => setBodyContent(content)}  description={formData.get('body')+""} />
+            <Tiptap  onChange={(content) => {setBodyContent(content) }}  description={formData.get('body') === null ?  "" :  formData.get('body')+""} />
 
             <div className='m-2 flex flex-row'>
                 <button className='z-[200] rounded-lg p-[5px] flex justify-center items-center h-[40px] w-[100px] bg-black text-white' type="submit" name="Submit">Submit</button>
