@@ -8,7 +8,7 @@ import Head from "next/head";
 
 // animation
 const boxVariants = {
-  entry: (back: boolean) => ({
+  entry: (back: boolean) => ({ 
     x: back ? -100 : 100,
     opacity: 0,
     scale: 0
@@ -31,9 +31,10 @@ const boxVariants = {
 function ETA({children , visible}:any) {
     if (visible == 0) {
         return (
-            <div className="flex items-center flex-col justify-center  w-full ">
+            <motion.div className="flex items-center flex-col justify-center  w-full ">
+                
                 {children}
-                <div className="h-[50%] w-[80%] ">
+                <div className="h-[100%] w-[80%] ">
                     <div className="flex flex-col items-center">
                       <p className="m-2 h-[60%] text-[11px]"> </p> 
                      <p className="m-4 text-[12px]]">블로그</p>
@@ -42,13 +43,13 @@ function ETA({children , visible}:any) {
                     </div>
                      
                  </div>
-            </div>
+            </motion.div>
         )
     } else if (visible == 1) {
         return (
             <div className="flex items-center flex-col justify-center  w-full ">
             {children}
-            <div className="h-[50%] w-[80%] ">
+            <div className="h-[100%] w-[80%] ">
                     <div className="flex flex-col items-center">
                       <p className="m-2 h-[60%] text-[11px]">실시간 인구 혼잡도 데이터와 카카오맵을 활용하여 소통하는 소셜미디어 </p> 
                      <p className="m-4 text-[12px]]">소셜</p>
@@ -63,7 +64,7 @@ function ETA({children , visible}:any) {
         return (
             <div className="flex items-center flex-col justify-center  w-full ">
                 {children}
-                <div className="h-[30%] w-[80%] ">
+                <div className="h-[100%] w-[80%] ">
                     <div className="flex flex-col items-center">
                       <p className="m-2 h-[60%] text-[11px]">공공데이터를 활용하여 전국에 있는 전기차충전소 위치를 보여주는 사이트 </p> 
                      <p className="m-4 text-[12px]]">전기차 충전소 </p>
@@ -99,30 +100,34 @@ function Slider() {
   };
 
   return (
-    <motion.div className="flex flex-col  w-[100%] h-[100%] justify-center items-center ">
-      <motion.div className="  flex items-center flex-col justify-center h-[90%] w-[100%]">
+    <motion.div className="p-4 flex flex-col  w-[100%] h-[100%] justify-center items-center ">
+      <motion.div className=" flex items-center flex-col justify-center h-[90%] w-[100%]">
         <AnimatePresence custom={back}>
           <motion.img
             src={images[visible]}
-            className="flex m-8  h-[60%] w-[100%] sm:w-[50%]"
+            className="flex m-8  h-[50%] w-[100%] sm:w-[50%]"
             custom={back}
             variants={boxVariants}
             initial="entry"
             animate="center"
+            whileHover={ {scale: 1.2}}
+            whileTap={ { scale: 0.8}}
             exit="exit"
             key={visible}
           />
-          <div className="flex h-[50%] w-[100%] sm:w-[100%] sm:h-[80%]">
+          <div className="flex flex-col h-[50%] w-[100%] sm:w-[100%] sm:h-[80%]">
             {visible == 0 && <ETA visible={visible}>포트폴리오 사이트 (개인블로그 및 미니블로그)</ETA>}
             { visible == 1 && <ETA visible={visible}>스팟플로우 (위치 기반 소셜미디어)</ETA>}
-            { visible == 2 && <ETA visible={visible}>에코프렌즈 (전기차 충전소 위치)</ETA>}
-          </div>
-        </AnimatePresence>
-      </motion.div>
-      <div className="flex justify-center h-auto w-full">
+            { visible == 2 && <ETA visible={visible}>에코프렌즈 (전기차 충전소 위치)</ETA>
+}             
+      <div className="flex justify-center h-[100px] w-full">
         <button className="m-4" onClick={prevPlease}>{"<"}</button>
         <button onClick={nextPlease}>{">"}</button>
       </div>
+          </div>
+        </AnimatePresence>
+      </motion.div>
+      
      
     </motion.div>
   );
