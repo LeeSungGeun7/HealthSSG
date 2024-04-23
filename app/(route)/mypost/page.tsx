@@ -8,6 +8,7 @@ import { MdDelete } from "react-icons/md";
 import Image from 'next/image';
 import Modal from '@/components/Modal/Modal';
 import { BsCheckAll } from "react-icons/bs";
+import { useRouter } from 'next/navigation';
 
 const center = "flex justify-center items-center"
 
@@ -28,7 +29,7 @@ interface Post {
 function Page() {
   DeleteButton.displayName = 'DeleteButton';
     const {data: session} = useSession();
-
+    const route = useRouter();
     const [data , setData] =useState<(Post & { isDeleted: boolean  })[]>([]);
 
     const email = session?.user?.email;
@@ -105,7 +106,7 @@ function Page() {
         <div className='overflow-scroll gap-1 p-4 grid-rows-3 justify-center grid sm:grid-cols-3 grid-cols-2 w-[100%] h-[90%] sm:w-[85%] sm:h-[80%] bg-slate-100'>
         {data.map((item, idx) => {
   return (
-    <div key={idx} className='flex justify-center items-center relative bg-white w-[200px] md:[250px] sm:w-[220px] h-[200px]'>
+    <div onClick={()=>{route.push(`/Post/${item.id}`)}} key={idx} className='flex justify-center items-center relative bg-white w-[200px] md:[250px] sm:w-[220px] h-[200px]'>
       {item.title}
       <Image className='absolute w-full h-full' src={`${item.thumbnail}/medium`} width={100} height={100} alt=""/>
       <DeleteButton
@@ -124,6 +125,7 @@ function Page() {
             setModalOnOff(false);
             setTrigger(!trigger);
             setIsDel(false);
+            deleteItems.clear();
           } else {
             setModalOnOff(false);
             alert("삭제 실패");
