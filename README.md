@@ -105,7 +105,7 @@ DeleteButton.displayName = 'DeleteButton'; 명시해서 해결  -->
 <img src="https://imagedelivery.net/6i45l_k8v6cNrhGva7A6BA/cf2e53f7-c592-420f-560a-a6ed19070300/public">
 
 
-**배포주소** https://health-ssg.vercel.app/
+**배포주소** https://myport.site/
 
 **구현기능**
 <br>
