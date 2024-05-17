@@ -80,7 +80,7 @@ function Header() {
     
     const pathname = usePathname()
     
-    const notAllowed = ["/Portfolio","/write"]
+    const notAllowed = ["/Portfolio","/write", "/admin"]
 
     const setUser = useSetRecoilState(userAtom);
     const user2 = useRecoilValue(userAtom);
@@ -107,7 +107,7 @@ function Header() {
 
   
   
-    if (width && width < 400) {
+    if (width && width < 400 ) {
       return(
         <>
         <div className='z-[1000] flex justify-around items-center fixed bottom-0 w-full h-[50px] bg-slate-200'>
@@ -130,7 +130,7 @@ function Header() {
       )
         
     }
-    else if (session) {
+    else if (session && !notAllowed.includes(pathname)) {
         return (
           <div className='font-jalnan2 text-#232327 z-[1000] hidden w-screen sm:flex fixed h-[50px]'>
             <div className='m-[25px] w-full flex justify-between'>

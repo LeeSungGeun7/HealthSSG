@@ -16,7 +16,7 @@ function SideBar() {
     const arrs = ["Home", "MyPage" , "Post", "Contact"]
     const [isActive, setIsActive] = useState(0)
     const pathName =usePathname()
-    const notAllowed = [ "/write"]
+    const notAllowed = [ "/write","/admin"]
     const user = useRecoilValue(userAtom);
 
 

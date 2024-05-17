@@ -15,6 +15,7 @@ import { CreateContactRe, ReadContactRe } from './action';
 import { getDayMinuteCounter } from "@/utils/TimeCal";
 
 
+
 interface Contact {
   id: number;
   createdAt: Date;
@@ -86,6 +87,7 @@ function Page() {
   const [reply, setReply] = useState("")
   const [turn,setTurn] = useState(false);
 
+  const [isOpenComment , setIsOpenComment] = useState(false);
 
 
   const [comments,setComments] = useState<Comment[]>([]);
@@ -101,16 +103,18 @@ function Page() {
     const res = await ReadContactRe();
     return res;
   }
+
   
 
   useEffect(() => {
     const fetchData = async () => {
+      console.log("dddd")
       const data:Contact[] = await getData();
       const comments = data.map((contact) => contact.comments).flat();
       setComments(comments);
     };
-    fetchData();
-  }, []);
+    fetchData(); 
+  }, [isOpenComment]);
 
   async function handleSendReply(userId:number, text:string) {
       if ( text.length < 2) {
@@ -128,7 +132,7 @@ function Page() {
   return (
     <div className={`${center} h-screen w-screen bg-slate-100`}>
         <div className='overflow-hidden relative flex  items-center justify-center flex-col sm:h-[70%] sm:w-[50%] h-[100%] w-[100%] bg-white'>
-        {comments &&turn && <Reply comments={comments} setTurn={()=>setTurn(!turn)}/>}
+        {comments &&turn && <Reply comments={comments} setTurn={()=>{setTurn(!turn); }}/>}
             <div className='flex justify-between items-center m-4 h-[10%] w-[90%] '>
                 <div className='flex items-center'>
                   <Image quality={100} alt="" className='rounded-full' width={50} height={50} src={"https://imagedelivery.net/6i45l_k8v6cNrhGva7A6BA/71921eef-1b3b-4283-680a-d4633119d900/avatar"}/>

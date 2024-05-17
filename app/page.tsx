@@ -244,10 +244,10 @@ export default function Home() {
         <div className={`${page ==2 ? "text-white" : "text-black"} fixed sm:left-[80px] z-[1000] left-[20px] top-7 font-jalnan2`}>{page==3 && "Project"}{page==2 && "Skills"}{page==4 && "Recently Post"}</div>
         <Dots num={null} currentPage={page}/>
         <div className={`${inner} bg-#D0CFCE`}>
-            <div className='flex flex-col  text-[30px] font-jalnan2  text-white flex-start bg-#D0CFCE h-[80%] w-[80%]'>
-                <TextAnim>
-                  FRONT END DEV 
-                </TextAnim>
+            <div className='relative flex flex-col  text-[30px] font-jalnan2  text-white flex-start bg-#D0CFCE h-[80%] sm:h-[100%] w-[80%]'>
+                <div className='absolute top-10'>
+                  
+                </div>
                 <div className='bg-white w-full h-[100%]'>
                     <div className='relative text-black bg-#D0CFCE w-full h-[100%]'>
                         <div className='left-[-76%] sm:left-[-100px] flex justify-center items-center relative h-[100%] w-[250%] sm:w-[100%] '>
@@ -267,21 +267,25 @@ export default function Home() {
             animate="animate"
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="absolute top-0 left-0 w-full h-full"
+            className="absolute mt-2 top-0 left-0 w-full h-full "
           >
             <Image
               width={480}
               height={300}
               src={images[currentImageIndex]}
               alt=""
-              className="w-full h-full rounded-3xl"
+              className="rounded-3xl w-full h-full"
             />
           </motion.div>
         </AnimatePresence>
         </motion.div>
                         </div>
                         <div className='hidden bottom-10 w-[100%] absolute sm:right-0 sm:block sm:top-20 sm:w-[40%]'>
-                          안녕하세요
+                          <div className='m-8'>
+                            <TextAnim>
+                              FRONT END DEV 
+                            </TextAnim>
+                          </div>
                           
                           </div>
                         

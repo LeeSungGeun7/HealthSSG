@@ -124,3 +124,8 @@ Framer-motion 애니메이션  사용
 next-auth 인증 사용 
 
 
+
+
+
+
+
