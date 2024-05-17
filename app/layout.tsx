@@ -74,7 +74,6 @@
 // }
 
 
-
 import { Inter } from "next/font/google";
 
 import "./globals.css";
@@ -84,6 +83,9 @@ import { Metadata } from "next";
 
 import RecoilRootWrapper from "@/components/RecoilRootWrapper";
 import Head from "next/head";
+import { useRouter } from "next/navigation";
+
+
 
 
 
@@ -112,19 +114,23 @@ export const metadata: Metadata = {
   }
 };
 
+type Props = {
+  params : {} ,
+  searchParams : { [key : string]:string | string[] |undefined};
+}
+
 export default function RootLayout({
-  children,
+children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
  
+  
 
-  
-  
   return (
     //  <SessionProvider >
       <>
-      <meta name="naver-site-verification" content="a654ebea498ce63dd21f867a77d0a6735bdb2301" />
+      <meta name="naver-site-verification" content="c1e3b97b5ae2a3ed1eedd23ae7250f7fa7d6f816" />
       {/* <Head>
 			<title>이성근 프론트엔드 개발자</title>
 		</Head> */}
